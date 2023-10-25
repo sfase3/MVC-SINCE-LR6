@@ -1,0 +1,106 @@
+﻿@using mvcLR6.Models;
+@using mvcLR6;
+
+@{
+    Layout = null;
+}
+@model List<Product>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Create an Order</title>
+    <link rel="stylesheet" href="~/css/new-style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="main">
+        @using (Html.BeginForm("OrderComplete", "Order", FormMethod.Post))
+        {
+            @for (int i = 0; i < Model.Count; i++)
+            {
+
+                <h3>Product №@Model[@i].Id</h3>
+                <div>
+                    <label for="products[@i].Name">Pizza Type:</label>
+                    <input type="text" id="products[@i].Name" name="products[@i].Name" required />
+                </div>
+
+                <div>
+                    <label for="products[@i].Size">Pizza Size:</label>
+                    <select id="products[@i].Size" name="products[@i].Size" required>
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Large</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="products[@i].Description">Special Requests:</label>
+                    <input type="text" id="products[@i].Description" name="products[@i].Description" />
+                </div>
+
+            }
+            <div>
+                <input type="submit" value="Confirm" />
+            </div>
+        }
+    </div>
+</body>
+</html>
