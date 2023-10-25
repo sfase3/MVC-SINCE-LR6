@@ -39,8 +39,6 @@ namespace mvcLR6
         [HttpPost]
         public IActionResult OrderComplete(List<Product> products)
         {
-            
-        
             return View("~/Views/OrderComplete.cshtml", products);
         }
     }

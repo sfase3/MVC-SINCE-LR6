@@ -10,6 +10,7 @@ app.UseStaticFiles();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Order}/{action=Index}/{id?}");
+    pattern: "{controller=File}/{action=DownloadFile}/{id?}");
+//pattern: "{controller=Order}/{action=Index}/{id?}");
 
 app.Run();
